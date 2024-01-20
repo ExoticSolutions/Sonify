@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../backend/css/home-styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <title>Sonify</title>
+  </head>
+  <body id="root">
+    <div class="">
+      <div class="flex justify-between border-stone-900 bg-stone-900">
+        <div class="flex nav-logo-top">
+          <img src="../img/sonify-logo.png" alt="" class="nav-logo" />
+          <h1 class="mt-2">Sonify</h1>
+        </div>
+        <div class="mt-auto mb-auto me-36 search-bar-top">
+          <div class="flex justify-center gap-2">
+            <input
+              type="text"
+              name="sonify-search"
+              id=""
+              placeholder="Search Sonify..."
+              class="search-bar-box border border-stone-800 rounded-md bg-stone-700"
+            />
+            <a href="searchResults.html" class="search-bar-btn">
+              <img
+                src="../img/serch-icon.png"
+                alt=""
+                class="w-[18px] h-[20px]"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="me-5 mt-4">
+          <h1 class="top-nav-txt">Github</h1>
+        </div>
+      </div>
+      <div class="w-full sm:h-[420px] lg:h-[700px]">
+        <div
+          class="absolute border border-transparent bg-gradient-to-r from-stone-900 w-full sm:h-[420px] lg:h-[700px]"
+        >
+          <div class="mt-20 sm:ms-5 w-full h-full">
+            <h1 class="hero-main-txt">
+              Curated content, ad-supported model, user-friendly interface,
+              diverse music catalog.
+            </h1>
+          </div>
+        </div>
+        <div class="object-cover w-full h-full">
+          <img src="../img/hero-cover.webp" alt="" class="w-full h-full" />
+        </div>
+      </div>
+      <div class="border border-stone-700 bg-stone-900 p-3">
+        <div>
+          <h1 class="featured-playlists-title mb-2">Featured Playlists</h1>
+        </div>
+        <div class="swiper mySwiper">
+          <div class="featured-playlist-data swiper-wrapper"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-stone-700 bg-stone-900 mt-5 p-3">
+      <div>
+        <h1 class="featured-playlists-title mb-2">New Releases</h1>
+      </div>
+      <div class="swiper mySwiper">
+        <div class="new-albums-data swiper-wrapper"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <footer class="mt-10 border border-stone-800 bg-stone-900">
+      <div>
+        <div class="flex justify-start footer-brand-logo">
+          <img src="../img/sonify-logo.png" alt="" class="" />
+          <h1 class="mt-auto mb-auto">Sonify</h1>
+        </div>
+        <div class="footer"></div>
+        <div class="flex justify-end">
+          <img src="../img/logo-exotic.png" alt="" class="exotic-logo" />
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../../backend/js/swiperConfig.js"></script>
+    <script type="module" src="../../backend/js/render.js"></script>
+  </body>
+</html>
