@@ -50,8 +50,11 @@ function getSearchInput() {
 }
 
 function searchInput(targetSearch) {
-  const endpoint = REQUESTS.search;
+  const endpoint =
+    REQUESTS.search +
+    `?q=${encodeURIComponent(targetSearch)}&type=track&limit=30`;
   console.log(targetSearch);
+  console.log(encodeURIComponent(targetSearch));
   fetch(endpoint, {
     method: "GET",
     headers: {
@@ -63,6 +66,7 @@ function searchInput(targetSearch) {
     })
     .then(function (data) {
       console.log(data);
+      localStorage.setItem("search-results", JSON.stringify(data.tracks.items));
     })
     .catch(function (error) {
       console.log(error);
@@ -122,10 +126,12 @@ function appendArtistElement() {
   artistsData.forEach((item) => {
     console.log(item.name);
     artistHTML += `
-    <div class="swiper-slide">
-       <a href="#" class="">
-         <img src="${item.images[0].url}" />
-       </a>
+    <div class="swiper-slide" class="w-full h-full">
+       <div class="">
+         <a href="#" class="w-full h-full">
+           <img src="${item.images[0].url}" class="w-full h-full"/>
+         </a>
+       </div>
     </div>`;
   });
   topArtistsElement.innerHTML += artistHTML;
