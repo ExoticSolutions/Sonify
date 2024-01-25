@@ -1,0 +1,79 @@
+#root {
+  background-color: #141414;
+}
+
+.nav-logo {
+  max-width: 20%;
+}
+
+.nav-logo-top {
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.top-nav-txt {
+  color: white;
+  font-size: 12px;
+}
+
+.search-bar-box {
+  font-size: 14px;
+  color: white;
+}
+
+.album-name {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.album-art {
+  max-width: 40%;
+  padding: 10px;
+}
+
+.album-author {
+  color: white;
+  font-weight: 200;
+}
+
+.release-date {
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.track-name {
+  color: rgb(222, 221, 221);
+  font-size: 12px;
+  font-style: 300;
+}
+
+.exotic-logo {
+  max-width: 200px;
+}
+
+.footer-brand-logo img {
+  max-width: 50px;
+}
+
+.footer-brand-logo {
+  color: whitesmoke;
+  font-weight: 700;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.footer-title {
+  color: whitesmoke;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.footer-subtext {
+  color: whitesmoke;
+  font-weight: 100;
+  font-size: 11px;
+}

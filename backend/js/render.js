@@ -4,15 +4,18 @@ import { encodeTarget } from "./apiPrep.js";
 import { getAccess } from "./apiPrep.js";
 import { getToken } from "./apiPrep.js";
 import { getCountryCode, getGeoLocation } from "./location.js";
-alert(window.innerWidth);
 import footerData from "./footer.js";
 const featuredPlaylistsElement = document.querySelector(
   ".featured-playlist-data"
 );
 const newAlbumsElement = document.querySelector(".new-albums-data");
+const testElement = document.querySelector(".test-link");
+const topArtistsElement = document.querySelector(".top-artists-data");
+console.log(topArtistsElement);
 const footerElement = document.querySelector(".footer");
 const searchBarBoxElement = document.querySelector(".search-bar-box");
 const searchBarBtnElement = document.querySelector(".search-bar-btn");
+
 console.log(newAlbumsElement);
 console.log(featuredPlaylistsElement);
 let COUNTRY_CODE = getCountryCode();
@@ -73,7 +76,74 @@ function initializeRender() {
   getNewAlbums();
   renderNewAlbums();
 
+  const artistsData = getRelevantArtists();
+  renderArtistsElement(artistsData);
+
   renderFooter();
+}
+
+function renderArtistsElement(artistCollection) {
+  let mock = [];
+  console.log(artistCollection);
+
+  artistCollection.forEach((item) => {
+    const endpoint = REQUESTS.getArtist + `${item.artist_id}`;
+    console.log(endpoint);
+
+    fetch(endpoint, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        mock.push(data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        localStorage.setItem("artists-data", JSON.stringify(mock));
+      });
+  });
+  //try to localstorage the artists data
+  appendArtistElement();
+}
+
+function appendArtistElement() {
+  let artistHTML = "";
+  //we will generate the elements in this function the artistsdata with the artists images
+  const endpoint = REQUESTS.getArtist;
+  const artistsData = JSON.parse(localStorage.getItem("artists-data"));
+  console.log(artistsData);
+
+  artistsData.forEach((item) => {
+    console.log(item.name);
+    artistHTML += `
+    <div class="swiper-slide">
+       <a href="#" class="">
+         <img src="${item.images[0].url}" />
+       </a>
+    </div>`;
+  });
+  topArtistsElement.innerHTML += artistHTML;
+}
+
+function getRelevantArtists() {
+  const artistSpecificData = [];
+  const targetData = JSON.parse(localStorage.getItem("New-Albums"));
+  console.log(targetData);
+
+  targetData.forEach((item) => {
+    console.log(`Artists ID: ${item.artists[0].id}`);
+    artistSpecificData.push({
+      artist_id: item.artists[0].id,
+      artist_name: item.artists[0].name,
+    });
+  });
+  return artistSpecificData;
 }
 
 function renderFooter() {
@@ -139,12 +209,36 @@ function renderNewAlbums() {
     console.log(albumItem);
     newAlbumsHTML += `
     <div class="swiper-slide">
-      <img src="${albumItem.images[0].url}" alt="${albumItem.artists[0].name}" class=""/>
+       <a href="track.html" class="Album-img" data-id="${albumItem.id}">
+         <img src="${albumItem.images[0].url}" alt="${albumItem.artists[0].name}" class=""/>
+       </a>
     </div>`;
   });
 
   newAlbumsElement.innerHTML = newAlbumsHTML;
 }
+
+document.querySelectorAll(".Album-img").forEach((item) => {
+  item.addEventListener("click", function () {
+    console.log(`clicked`);
+    const targetAlbums = JSON.parse(localStorage.getItem("New-Albums"));
+    console.log(targetAlbums);
+    let albumId = item.dataset.id;
+    let matchingAlbum;
+
+    targetAlbums.forEach((albumItem) => {
+      console.log(albumId);
+
+      if (albumId === albumItem.id) {
+        matchingAlbum = albumItem;
+        console.log("true");
+      }
+    });
+    console.log(matchingAlbum);
+
+    localStorage.setItem("Target-Album", JSON.stringify(matchingAlbum));
+  });
+});
 
 function getRegionFeaturedPlaylists() {
   const endpoint = REQUESTS.featuredPlaylists;
@@ -183,10 +277,11 @@ function mapPlaylistContent(targetData) {
   let mappedDataHTML = "";
 
   targetData.forEach((playlistItem) => {
-    console.log(playlistItem.images[0].url);
     mappedDataHTML += `
     <div class="swiper-slide">
-     <img src="${playlistItem.images[0].url}" alt="" />
+      <a href="track.html" >
+        <img src="${playlistItem.images[0].url}" alt="" />
+      </a>
     </div>`;
   });
 

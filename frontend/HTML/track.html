@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../../backend/css/album-tracks.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Sonify</title>
+  </head>
+  <body id="root">
+    <div>
+      <div class="flex justify-between border-stone-900 bg-stone-900">
+        <div class="flex nav-logo-top">
+          <img src="../img/sonify-logo.png" alt="" class="nav-logo" />
+          <h1 class="mt-3">Sonify</h1>
+        </div>
+        <div class="mt-auto mb-auto me-36 search-bar-top">
+          <div class="flex justify-center gap-2">
+            <input
+              type="text"
+              name="sonify-search"
+              id=""
+              placeholder="Search Sonify..."
+              class="search-bar-box border border-stone-800 rounded-md bg-stone-700"
+            />
+            <a href="searchResults.html" class="search-bar-btn">
+              <img
+                src="../img/serch-icon.png"
+                alt=""
+                class="w-[18px] h-[20px]"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="me-5 mt-4">
+          <h1 class="top-nav-txt">Github</h1>
+        </div>
+      </div>
+      <div>
+        <div class="main-album-info grid grid-rows-1"></div>
+      </div>
+    </div>
+    <footer class="mt-10 border border-stone-800 bg-stone-900">
+      <div>
+        <div class="flex justify-start footer-brand-logo">
+          <img src="../img/sonify-logo.png" alt="" class="" />
+          <h1 class="mt-auto mb-auto">Sonify</h1>
+        </div>
+        <div class="footer"></div>
+        <div class="flex justify-end">
+          <img src="../img/logo-exotic.png" alt="" class="exotic-logo" />
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="../../backend/js/albumTracks.js"></script>
+  </body>
+</html>
