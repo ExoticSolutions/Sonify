@@ -125,16 +125,27 @@ function renderAlbumTracks(targetData) {
   return albumTracksHTML;
 }
 
+function getImageURL() {
+  return selectedAlbumData.images[0].url;
+}
+
+function getReleaseDate() {
+  return selectedAlbumData.release_date;
+}
+
 document.querySelectorAll(".track-name").forEach((item) => {
   item.addEventListener("click", function () {
     const trackName = item.dataset.name;
     const artistName = item.dataset.artist;
-    console.log(trackName);
+    const imgURL = getImageURL();
+    const releaseDate = getReleaseDate();
     let targetTrackData = {
       albumID: selectedAlbumData.id,
       track: trackName,
       Album: selectedAlbumData.name,
       artist: artistName,
+      coverArt: imgURL,
+      launch: releaseDate,
     };
 
     console.log(selectedAlbumData);

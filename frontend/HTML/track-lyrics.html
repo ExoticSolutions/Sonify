@@ -3,12 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../backend/css/home-styles.css" />
+    <link rel="stylesheet" href="../../backend/css/search-results.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Sonify</title>
   </head>
-  <body>
+  <body id="root">
     <div>
-      <div class="flex justify-between"></div>
+      <div class="flex justify-between border-stone-900 bg-stone-900">
+        <div class="flex nav-logo-top">
+          <img src="../img/sonify-logo.png" alt="" class="nav-logo" />
+          <a href="home.html" class="mt-2">Sonify</h1>
+        </div>
+        <div class="mt-auto mb-auto me-36 search-bar-top">
+          <div class="flex justify-center gap-2">
+            <input
+              type="text"
+              name="sonify-search"
+              id=""
+              placeholder="Search Sonify..."
+              class="search-bar-box border border-stone-800 rounded-md bg-stone-700"
+            />
+            <a href="searchResults.html" class="search-bar-btn">
+              <img
+                src="../img/serch-icon.png"
+                alt=""
+                class="w-[18px] h-[20px]"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="me-5 mt-3">
+          <a
+            href="https://github.com/ExoticSolutions?tab=repositories"
+            target="_blank"
+            class="top-nav-txt"
+            >Github</a
+          >
+        </div>
+      </div>
+
+      <div class="artist-data"></div>
+
+      <div class="track-lyric-data"></div>
     </div>
     <script type="module" src="../../backend/js/lyrics.js"></script>
   </body>

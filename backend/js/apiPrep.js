@@ -1,6 +1,6 @@
 export const cleanString = `1a0d264e0c954fe7b2d6257821ba7a16:92dbda80720644bdbf45d2c4470ee47d`;
 export const REQUESTS = {
-  localLink: "http://127.0.0.1:5500/",
+  localLink: "http://127.0.0.1:5500/frontend/HTML/track-lyrics.html",
   generateAccessToken: "https://accounts.spotify.com/api/token",
   featuredPlaylists: "https://api.spotify.com/v1/browse/featured-playlists",
   newAlbums: "https://api.spotify.com/v1/browse/new-releases",
@@ -8,11 +8,16 @@ export const REQUESTS = {
   getTrack: "https://api.spotify.com/v1/tracks/",
   getAlbumTracks: "https://api.spotify.com/v1/albums/",
   getArtist: "https://api.spotify.com/v1/artists/",
-  getLyrics: "https://api.genius.com/search",
+  getLyrics: "https://api.vagalume.com.br/search.php",
+  genuisAUTH: "https://api.genius.com/oauth/token",
 };
-export const Genius =
-  "iL_MvgMhWEPOrxdtLdQhb66OJyhO_P2J0ald70DkUvbFh4Ubur1_2h8WPTq42Pv7";
+export const valgumeKey = "a3a61b0ba68ecafedebb83d4a1db689d";
+export const rapidApiHost = "genius-song-lyrics1.p.rapidapi.com";
+export const GeniusID =
+  "WvFtrSR-2MMZ-29PUhMap65UBhX5XqkPsYXdOE6VmhtJgLtX-huQc5jLT2kbfdZQ";
 
+export const GeniusSecret =
+  "AvY43vObDxQvmCTNFMC8BA3l6WZWbz36UL5v8kgmUayy_SCZHmOUkqYw1YYcytyK5cX5JJEcEQtNUmCLLKYKWw";
 export function encodeTarget(targetString) {
   return "Basic " + btoa(targetString);
 }
