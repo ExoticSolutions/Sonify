@@ -38,3 +38,7 @@
 .album-art {
   max-width: 275px;
 }
+
+.playlist-art {
+  max-width: 50%;
+}

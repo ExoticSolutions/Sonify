@@ -24,7 +24,7 @@ console.log(`Country: ${COUNTRY_CODE}`);
 const encoded = encodeTarget(cleanString);
 
 getAccess(REQUESTS.generateAccessToken, encoded);
-let accessToken = getToken();
+export let accessToken = getToken();
 accessToken = accessToken.access_token;
 console.log(accessToken);
 console.log(`AAA: ${accessToken}`);
@@ -285,11 +285,51 @@ function mapPlaylistContent(targetData) {
   targetData.forEach((playlistItem) => {
     mappedDataHTML += `
     <div class="swiper-slide">
-      <a href="track.html" >
+      <a href="playlistTracks.html" class="playlist-art" data-playlist-name="${playlistItem.name}" data-playlist-id="${playlistItem.id}" data-img-url="${playlistItem.images[0].url}">
         <img src="${playlistItem.images[0].url}" alt="" />
       </a>
     </div>`;
   });
 
   featuredPlaylistsElement.innerHTML = mappedDataHTML;
+}
+
+document.querySelectorAll(".playlist-art").forEach((item) => {
+  item.addEventListener("click", function () {
+    const playlistName = item.dataset.playlistName;
+    const playlistID = item.dataset.playlistId;
+    let targetPlaylist = {
+      name: playlistName,
+      id: playlistID,
+      market: COUNTRY_CODE,
+      url: item.dataset.imgUrl,
+    };
+    callPlaylistTracks(playlistID);
+
+    localStorage.setItem("target-playlist", JSON.stringify(targetPlaylist));
+    console.log(targetPlaylist);
+  });
+});
+
+function callPlaylistTracks(targetID) {
+  const endpoint = REQUESTS.getPlaylistTracks;
+
+  fetch(endpoint + `${targetID}/tracks`, {
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data.items);
+      localStorage.setItem(
+        "target-playlist-tracks",
+        JSON.stringify(data.items)
+      );
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }

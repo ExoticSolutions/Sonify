@@ -10,6 +10,7 @@ export const REQUESTS = {
   getArtist: "https://api.spotify.com/v1/artists/",
   getLyrics: "https://api.vagalume.com.br/search.php",
   genuisAUTH: "https://api.genius.com/oauth/token",
+  getPlaylistTracks: "https://api.spotify.com/v1/playlists/",
 };
 export const valgumeKey = "a3a61b0ba68ecafedebb83d4a1db689d";
 export const rapidApiHost = "genius-song-lyrics1.p.rapidapi.com";
